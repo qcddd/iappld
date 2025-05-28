@@ -1,24 +1,40 @@
 <?php
-// 设置响应头为纯JSON格式（确保浏览器直接显示JSON）
-header('Content-Type: application/json; charset=utf-8');
+header('Content-Type: application/json');
 
-// 直接从GET请求获取参数
-$type = $_GET['type'] ?? '';
-$code = $_GET['code'] ?? '';
+// 获取查询字符串
+$queryString = $_SERVER['QUERY_STRING'] ?? '';
 
-// 检查参数是否存在
-if (empty($type) || empty($code)) {
-    http_response_code(400); // 400 Bad Request
+// 解析查询参数
+parse_str($queryString, $params);
+
+// 提取需要的参数
+$type = $params['type'] ?? null;
+$code = $params['code'] ?? null;
+
+// 验证参数是否存在
+if (!$type || !$code) {
+    http_response_code(400);
     echo json_encode([
-        'error' => true,
-        'message' => 'Missing required parameters: type and code must be provided'
-    ], JSON_PRETTY_PRINT);
+        'error' => 'Missing required parameters',
+        'message' => 'Both "type" and "code" parameters are required'
+    ]);
     exit;
 }
 
-// 返回简洁的JSON响应
+// 在这里可以对参数进行进一步验证或处理
+// 例如验证type是否为特定值（如'wx'）
+
+// 返回获取到的参数
 echo json_encode([
-    'type' => $type,
-    'code' => $code
-], JSON_PRETTY_PRINT);
+    'success' => true,
+    'data' => [
+        'type' => $type,
+        'code' => $code
+    ]
+]);
+
+// 如果需要，可以将参数用于其他操作，比如请求目标URL
+// $targetUrl = "https://iappld.top/love520/?type=$type&code=$code&state=";
+// $response = file_get_contents($targetUrl);
+// 处理$response...
 ?>
