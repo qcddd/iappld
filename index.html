@@ -264,11 +264,19 @@
     <script src="js/jquery.lineProgressbar.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript"></script>
-    // 通过 ID 查找元素并删除
-const topControl = document.getElementById('topcontrol');
-if (topControl) {
-  topControl.remove(); // 删除元素
-}
+    
+    <!-- 动态删除 topcontrol 元素 -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const topControl = document.getElementById('topcontrol');
+        if (topControl) {
+          topControl.remove();
+          console.log('已删除元素: #topcontrol');
+        } else {
+          console.log('未找到元素: #topcontrol');
+        }
+      });
+    </script>
 </body>
 
 </html>
