@@ -8,3 +8,5 @@ type = "webpack"  # 或其他适合静态站点的类型
 [
 site
 ]
+bucket = "."  # 点表示当前目录
+entry-point = "index.html"
