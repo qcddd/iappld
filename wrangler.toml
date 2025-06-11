@@ -1,0 +1,5 @@
+# wrangler.toml
+name = "iappld"  # 自定义名称（英文）
+main = "src/index.php" # ⚠️ 必须指向实际入口文件
+compatibility_date = "2025-06-11"
+account_id = "7d2967e5ad6a294e8db65e79c837cf66"  # 从Cloudflare控制台获取
