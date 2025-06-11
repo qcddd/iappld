@@ -5,8 +5,15 @@ main = "index.js" # ⚠️ 必须指向实际入口文件
 compatibility_date = "2025-06-11"
 account_id = "7d2967e5ad6a294e8db65e79c837cf66"  # 从Cloudflare控制台获取
 type = "webpack"  # 或其他适合静态站点的类型
+
 [
 site
 ]
-bucket = "."  # 点表示当前目录
-entry-point = "index.html"
+bucket = "."  # 静态文件目录，点表示当前目录
+entry-point = "index.html"  # 入口文件
+
+[
+build
+]
+command = "echo 'Building static site'"  # 静态网站不需要构建命令
+outdir = "."  # 输出目录
