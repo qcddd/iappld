@@ -1,6 +1,6 @@
 # wrangler.toml
 # wrangler.toml
 name = 'iappldfhdgst'
-main = "index.js" # ⚠️ 必须指向实际入口文件
+main = "/index.js" # ⚠️ 必须指向实际入口文件
 compatibility_date = "2025-06-11"
 account_id = "7d2967e5ad6a294e8db65e79c837cf66"  # 从Cloudflare控制台获取
